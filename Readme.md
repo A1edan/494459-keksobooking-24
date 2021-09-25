@@ -1,6 +1,6 @@
 # Личный проект «Кексобукинг»
 
-* Студент: [Aleksandr](https://up.htmlacademy.ru/javascript/24/user/494459).
+* Студент: [Aleksandr Daniel](https://up.htmlacademy.ru/javascript/24/user/494459).
 * Наставник: [Антон Попов](https://htmlacademy.ru/profile/joker).
 
 ---
