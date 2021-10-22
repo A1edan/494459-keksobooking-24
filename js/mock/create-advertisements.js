@@ -1,4 +1,4 @@
-import { makePinData } from './data.js';
+import { makePinData } from './data';
 
 const createAdvertisements = (count) => [...Array(count)].map(makePinData);
 
