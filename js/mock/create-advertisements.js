@@ -1,5 +1,5 @@
-import { makePinData } from './data';
+import {makePinsData} from './data.js';
 
-const createAdvertisements = (count) => [...Array(count)].map(makePinData);
+const createAdvertisements = (count) => [...Array(count)].map(makePinsData);
 
 export {createAdvertisements};
