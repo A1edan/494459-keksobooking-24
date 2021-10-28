@@ -1,9 +1,9 @@
-import {getRandomFloatNumber, getRandomNumber} from './random-number-generator.js';
+import { getRandomFloatNumber, getRandomNumber } from './random-number-generator.js';
 
 const NUMBEROBJECTGENERATE = 10;
 
-const makePinData = () => {
-  const FEAUTERS = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+const makePinsData = () => {
+  const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
   const TYPEOFROOM = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
   const CHEKINOUT = ['12:00', '13:00', '14:00'];
   const PHOTOS = [
@@ -24,6 +24,14 @@ const makePinData = () => {
 
   const getRandomArray = (arr) => arr.slice(0, getRandomNumber(1, arr.length));
 
+  const valueType = {
+    palace: 'Дворец',
+    flat: 'Квартира',
+    house: 'Дом',
+    bungalow: 'Бунгало',
+    hotel: 'Отель',
+  };
+
   const location = {
     lat: getRandomFloatNumber(35.65, 35.7, 5),
     lng: getRandomFloatNumber(139.7, 139.8, 5),
@@ -36,12 +44,12 @@ const makePinData = () => {
       title: 'Бла, бла, бла',
       address: `${location.lat}, ${location.lng}`,
       price: getRandomNumber(),
-      type: getRandomStringFromArray(TYPEOFROOM),
+      type: valueType[getRandomStringFromArray(TYPEOFROOM)],
       rooms: getRandomNumber(),
       guests: getRandomNumber(),
       checkin: getRandomStringFromArray(CHEKINOUT),
       checkout: getRandomStringFromArray(CHEKINOUT),
-      feauters: getRandomArray(FEAUTERS),
+      features: getRandomArray(FEATURES),
       description: 'Бла, бла, бла',
       photos: getRandomArray(PHOTOS),
     },
@@ -49,4 +57,4 @@ const makePinData = () => {
   };
 };
 
-export {makePinData, NUMBEROBJECTGENERATE};
+export { makePinsData, NUMBEROBJECTGENERATE };
