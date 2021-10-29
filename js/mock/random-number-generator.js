@@ -33,4 +33,4 @@ const getRandomFloatNumber = (min = 1, max = 10, simbolsAfterComma = 5) => {
 const getRandomNumber = (min, max) => getRandomFloatNumber(min, max, 0);
 
 
-export {getRandomFloatNumber, getRandomNumber};
+export { getRandomFloatNumber, getRandomNumber };
