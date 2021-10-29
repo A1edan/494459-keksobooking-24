@@ -7,7 +7,7 @@
  * @return {number} - возврещаем сгенерированное, положительное, случайное, дробное число.
  */
 
-const getRandomFloatNumber = (min = 1, max = 100, simbolsAfterComma = 5) => {
+const getRandomFloatNumber = (min = 1, max = 10, simbolsAfterComma = 5) => {
   if (min > max) {
     [min, max] = [max, min];
   }

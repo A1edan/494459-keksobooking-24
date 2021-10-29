@@ -1,3 +1,6 @@
-import {createAdvertisements} from './create-advertisements.js';
+import {createAdvertisements} from './mock/create-advertisements.js';
+import {NUMBEROBJECTGENERATE} from './mock/data.js';
+import {adsPopup} from './mock/popup.js';
 
-createAdvertisements(10);
+const adsData = createAdvertisements(NUMBEROBJECTGENERATE);
+adsPopup(adsData[0]);
