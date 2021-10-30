@@ -2,7 +2,7 @@ import { getRandomFloatNumber, getRandomNumber } from './random-number-generator
 
 const NUMBEROBJECTGENERATE = 10;
 
-const makePinsData = () => {
+const makePinData = () => {
   const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
   const TYPEOFROOM = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
   const CHEKINOUT = ['12:00', '13:00', '14:00'];
@@ -57,4 +57,4 @@ const makePinsData = () => {
   };
 };
 
-export { makePinsData, NUMBEROBJECTGENERATE };
+export { makePinData, NUMBEROBJECTGENERATE };

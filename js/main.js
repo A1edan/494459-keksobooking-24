@@ -1,6 +1,10 @@
-import {createAdvertisements} from './mock/create-advertisements.js';
-import {NUMBEROBJECTGENERATE} from './mock/data.js';
-import {adsPopup} from './mock/popup.js';
+import { createAdvertisements } from './mock/create-advertisements.js';
+import { NUMBEROBJECTGENERATE } from './mock/data.js';
+import { showPopup } from './popup.js';
+import { switchToDisabled, switchToAvalabled } from './form.js';
 
-const adsData = createAdvertisements(NUMBEROBJECTGENERATE);
-adsPopup(adsData[0]);
+
+const showData = createAdvertisements(NUMBEROBJECTGENERATE);
+showPopup(showData[0]);
+switchToDisabled();
+switchToAvalabled();
