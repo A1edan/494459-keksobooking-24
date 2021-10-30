@@ -1,19 +1,20 @@
-const switchDisabled = () => {
+const adForm = document.querySelector('.ad-form');
+const formsDisabled = adForm.querySelectorAll('fieldset');
+const mapFilters = document.querySelector('.map__filters');
+const mapFilterDisabled = mapFilters.querySelectorAll('select');
 
-  const adForm = document.querySelector('.ad-form');
+
+const switchToDisabled = () => {
   adForm.classList.add('ad-form--disabled');
-  const mapFilters = document.querySelector('.map__filters');
   mapFilters.classList.add('map__filters--disabled');
 
-  const formDisabled = adForm.querySelectorAll('.ad-form__element');
-  const mapDisabled = mapFilters.querySelectorAll('.map__filter');
-
-  formDisabled.forEach((value) => {
-    value.setAttribute('disabled', '');
-  });
-  mapDisabled.forEach((value) => {
-    value.setAttribute('disabled', '');
-  });
+  formsDisabled.forEach((form) => form.setAttribute('disabled', ''));
+  mapFilterDisabled.forEach((filter) => filter.setAttribute('disabled', ''));
 };
 
-export { switchDisabled };
+const switchToAvalabled = () => {
+  adForm.classList.remove('ad-form--disabled');
+  adForm.forEach((form) => form.removeAttribute('disabled', 'disabled'));
+};
+
+export { switchToDisabled, switchToAvalabled };
