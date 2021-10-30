@@ -14,7 +14,7 @@ const switchToDisabled = () => {
 
 const switchToAvalabled = () => {
   adForm.classList.remove('ad-form--disabled');
-  adForm.forEach((form) => form.removeAttribute('disabled', 'disabled'));
+  formsDisabled.forEach((form) => form.removeAttribute('disabled', 'disabled'));
 };
 
 export { switchToDisabled, switchToAvalabled };
