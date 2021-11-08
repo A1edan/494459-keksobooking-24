@@ -1,6 +1,6 @@
 import { getRandomFloatNumber, getRandomNumber } from './random-number-generator.js';
 
-const NUMBEROBJECTGENERATE = 10;
+const COUNT_ADS = 10;
 
 const makePinData = () => {
   const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
@@ -57,4 +57,4 @@ const makePinData = () => {
   };
 };
 
-export { makePinData, NUMBEROBJECTGENERATE };
+export { makePinData, COUNT_ADS };
