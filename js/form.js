@@ -1,56 +1,23 @@
 const adForm = document.querySelector('.ad-form');
 const formsDisabled = adForm.querySelectorAll('fieldset');
-const mapFilter = document.querySelector('.map__filters');
-const mapFilterDisabled = mapFilter.querySelectorAll('select');
+const mapFilters = document.querySelector('.map__filters');
+const mapFilterSelects = mapFilters.querySelectorAll('select');
 
 const switchToDisabled = () => {
   adForm.classList.add('ad-form--disabled');
-  mapFilter.classList.add('map__filters--disabled');
+  mapFilters.classList.add('map__filters--disabled');
 
   formsDisabled.forEach((form) => form.setAttribute('disabled', ''));
-  mapFilterDisabled.forEach((filter) => filter.setAttribute('disabled', ''));
+  mapFilterSelects.forEach((filter) => filter.setAttribute('disabled', ''));
 };
 
 const switchToAvalabled = () => {
   adForm.classList.remove('ad-form--disabled');
   formsDisabled.forEach((form) => form.removeAttribute('disabled'));
+
+  mapFilters.classList.remove('map__filters--disabled');
+  mapFilterSelects.forEach((select) => select.removeAttribute('disabled'));
 };
-
-const formFieldsets = adForm.querySelectorAll('.ad-form__element');
-const filterFieldsets = mapFilter.querySelectorAll('.map__filter');
-
-const enableFilter = () => {
-  mapFilter.classList.add('map__filters--disabled');
-  filterFieldsets.forEach((fieldset) => fieldset.removeAttribute('disabled'));
-};
-
-const enableForm = () => {
-  adForm.classList.remove('ad-form--disabled');
-  formFieldsets.forEach((fieldset) => fieldset.removeAttribute('disabled'));
-};
-
-const housingType = document.querySelector('#type');
-const housingOptions = housingType.querySelectorAll('option');
-const pricesPeerNight = document.querySelector('#price');
-
-const priceChangeHandler = (evt) => {
-  const housingPrices = {
-    bungalow: '0',
-    flat: '1000',
-    hotel: '3000',
-    house: '5000',
-    palace: '10000',
-  };
-
-  housingOptions.forEach((option) => {
-    if (evt.target.value === option.value) {
-      pricesPeerNight.setAttribute('min', housingPrices[evt.target.value]);
-      pricesPeerNight.setAttribute('placeholder', housingPrices[evt.target.value]);
-    }
-  });
-};
-
-housingType.addEventListener('change', priceChangeHandler);
 
 const roomsGuests = {
   1: {
@@ -86,7 +53,45 @@ const roomsChangeHandler = (evt) => {
   evt.target.reportValidity();
 };
 
-roomNumber.addEventListener('change', roomsChangeHandler);
-capacity.addEventListener('change', roomsChangeHandler);
+const housingType = document.querySelector('#type');
+const housingOptions = housingType.querySelectorAll('option');
+const pricePeerNight = document.querySelector('#price');
 
-export { switchToDisabled, switchToAvalabled, enableFilter, enableForm, priceChangeHandler, roomsChangeHandler };
+const housingPrices = {
+  bungalow: 0,
+  flat: 1000,
+  hotel: 3000,
+  house: 5000,
+  palace: 10000,
+};
+
+const priceChangeHandler = (evt) => {
+  housingOptions.forEach((option) => {
+    if (evt.target.value === option.value) {
+      pricePeerNight.setAttribute('min', housingPrices[evt.target.value]);
+      pricePeerNight.setAttribute('placeholder', housingPrices[evt.target.value]);
+    }
+  });
+};
+
+const timeIn = document.querySelector('#timein');
+const timeOut = document.querySelector('#timeout');
+
+const timeInOutHandler = (evt) => {
+  if (evt.target === timeIn) {
+    timeOut.value = evt.target.value;
+  } else {
+    timeIn.value = evt.target.value;
+  }
+};
+
+const addFormHandlers = () => {
+  roomNumber.addEventListener('change', roomsChangeHandler);
+  capacity.addEventListener('change', roomsChangeHandler);
+  housingType.addEventListener('change', priceChangeHandler);
+  timeIn.addEventListener('change', timeInOutHandler);
+  timeOut.addEventListener('change', timeInOutHandler);
+};
+
+
+export { switchToDisabled, switchToAvalabled, addFormHandlers };
