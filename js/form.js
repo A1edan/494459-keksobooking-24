@@ -77,13 +77,7 @@ const priceChangeHandler = (evt) => {
 const timeIn = document.querySelector('#timein');
 const timeOut = document.querySelector('#timeout');
 
-const timeInOutHandler = (evt) => {
-  if (evt.target === timeIn) {
-    timeOut.value = evt.target.value;
-  } else {
-    timeIn.value = evt.target.value;
-  }
-};
+const timeInOutHandler = (evt) => (evt.target === timeIn ? timeOut.value = evt.target.value : timeIn.value = evt.target.value);
 
 const addFormHandlers = () => {
   roomNumber.addEventListener('change', roomsChangeHandler);
