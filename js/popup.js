@@ -1,5 +1,4 @@
-const popupTemplate = document.querySelector('#card').content.querySelector('.popup');
-const popup = popupTemplate.cloneNode(true);
+const popup = document.querySelector('#card').content.querySelector('.popup').cloneNode(true);
 
 const showPopup = (ad) => {
   if (ad.offer.title) {
@@ -75,7 +74,7 @@ const showPopup = (ad) => {
     popup.querySelector('.popup__avatar').remove();
   }
 
-  document.querySelector('#map-canvas').append(popup);
+  return popup;
 };
 
 export { showPopup };
