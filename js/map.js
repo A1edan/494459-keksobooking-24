@@ -1,23 +1,25 @@
 import { formEnabled } from './form.js';
-import { createAdvertisements } from './mock/create-advertisements.js';
-import { COUNT_ADS } from './mock/data.js';
 import { showPopup } from './popup.js';
+
+const ZOOM = 12;
 
 const address = document.querySelector('#address');
 address.setAttribute('disabled', '');
 
-const addMap = () => {
+const coords = {
+  lat: 35.6895,
+  lng: 139.692,
+};
+
+const addMap = (points) => {
   const map = L.map('map-canvas')
     .on('load', () => {
       formEnabled();
-      address.value = '35.6895, 139.692';
+      address.value = `${coords.lat}, ${coords.lng}`;
     })
     .setView(
-      {
-        lat: 35.6895,
-        lng: 139.692,
-      },
-      12,
+      coords,
+      ZOOM,
     );
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -33,29 +35,21 @@ const addMap = () => {
     },
   );
 
-  const pin = L.marker(
-    {
-      lat: 35.6895,
-      lng: 139.692,
-    },
+  const mainPin = L.marker(
+    coords,
     {
       draggable: true,
       icon: mainPinIcon,
     },
   ).addTo(map);
 
-  pin.on('move', (evt) => {
+  mainPin.on('move', (evt) => {
     const coordinates = evt.target.getLatLng();
     address.value = `${coordinates.lat.toFixed(5)}, ${coordinates.lng.toFixed(5)}`;
   });
 
-
-  const points = createAdvertisements(COUNT_ADS);
-
   const createPin = (point) => {
     const { lat, lng } = point.location;
-    const price = point.offer.price;
-    const title = point.offer.title;
     const pinIcon = L.icon(
       {
         iconUrl: '../img/pin.svg',
@@ -67,8 +61,6 @@ const addMap = () => {
       {
         lat,
         lng,
-        price,
-        title,
       },
       {
         icon: pinIcon,
