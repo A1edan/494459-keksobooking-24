@@ -3,7 +3,7 @@ import { getRandomFloatNumber, getRandomNumber } from './random-number-generator
 const COUNT_ADS = 10;
 
 const makePinData = () => {
-  const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+  const FEATURES = ['wifi', ' dishwasher', ' parking', ' washer', ' elevator', ' conditioner'];
   const TYPEOFROOM = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
   const CHEKINOUT = ['12:00', '13:00', '14:00'];
   const PHOTOS = [
@@ -43,7 +43,7 @@ const makePinData = () => {
     offer: {
       title: 'Бла, бла, бла',
       address: `${location.lat}, ${location.lng}`,
-      price: getRandomNumber(),
+      price: getRandomNumber(5000, 1000000),
       type: valueType[getRandomStringFromArray(TYPEOFROOM)],
       rooms: getRandomNumber(),
       guests: getRandomNumber(),

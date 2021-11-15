@@ -1,21 +1,21 @@
 const adForm = document.querySelector('.ad-form');
-const formsDisabled = adForm.querySelectorAll('fieldset');
+const adFormFieldsets = adForm.querySelectorAll('fieldset');
 const mapFilters = document.querySelector('.map__filters');
 const mapFilterSelects = mapFilters.querySelectorAll('select');
 
-const switchToDisabled = () => {
+const formDisabled = () => {
   adForm.classList.add('ad-form--disabled');
   mapFilters.classList.add('map__filters--disabled');
 
-  formsDisabled.forEach((form) => form.setAttribute('disabled', ''));
+  adFormFieldsets.forEach((form) => form.setAttribute('disabled', ''));
   mapFilterSelects.forEach((filter) => filter.setAttribute('disabled', ''));
 };
 
-const switchToAvalabled = () => {
+const formEnabled = () => {
   adForm.classList.remove('ad-form--disabled');
-  formsDisabled.forEach((form) => form.removeAttribute('disabled'));
-
   mapFilters.classList.remove('map__filters--disabled');
+
+  adFormFieldsets.forEach((form) => form.removeAttribute('disabled'));
   mapFilterSelects.forEach((select) => select.removeAttribute('disabled'));
 };
 
@@ -77,13 +77,7 @@ const priceChangeHandler = (evt) => {
 const timeIn = document.querySelector('#timein');
 const timeOut = document.querySelector('#timeout');
 
-const timeInOutHandler = (evt) => {
-  if (evt.target === timeIn) {
-    timeOut.value = evt.target.value;
-  } else {
-    timeIn.value = evt.target.value;
-  }
-};
+const timeInOutHandler = (evt) => (evt.target === timeIn ? timeOut.value = evt.target.value : timeIn.value = evt.target.value);
 
 const addFormHandlers = () => {
   roomNumber.addEventListener('change', roomsChangeHandler);
@@ -94,4 +88,4 @@ const addFormHandlers = () => {
 };
 
 
-export { switchToDisabled, switchToAvalabled, addFormHandlers };
+export { formDisabled, formEnabled, addFormHandlers };
