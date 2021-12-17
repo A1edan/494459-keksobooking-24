@@ -2,9 +2,10 @@ import { formEnabled } from './form.js';
 import { showPopup } from './popup.js';
 
 const ZOOM = 12;
+const NUMBERS_AFTER_COMMA = 5;
 
 const address = document.querySelector('#address');
-address.setAttribute('disabled', '');
+address.setAttribute('readonly', '');
 
 const coords = {
   lat: 35.6895,
@@ -45,14 +46,14 @@ const addMap = (points) => {
 
   mainPin.on('move', (evt) => {
     const coordinates = evt.target.getLatLng();
-    address.value = `${coordinates.lat.toFixed(5)}, ${coordinates.lng.toFixed(5)}`;
+    address.value = `${coordinates.lat.toFixed(NUMBERS_AFTER_COMMA)}, ${coordinates.lng.toFixed(NUMBERS_AFTER_COMMA)}`;
   });
 
   const createPin = (point) => {
     const { lat, lng } = point.location;
     const pinIcon = L.icon(
       {
-        iconUrl: '../img/pin.svg',
+        iconUrl: './img/pin.svg',
         iconSize: [40, 40],
         iconAnchor: [20, 20],
       });
