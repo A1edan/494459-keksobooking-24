@@ -1,10 +1,11 @@
-import { createAdvertisements } from './mock/create-advertisements.js';
-import { COUNT_ADS } from './mock/data.js';
-import { formDisabled, addFormHandlers } from './form.js';
+import { formDisabled, addFormHandlers, adForm } from './form.js';
 import { addMap } from './map.js';
-
-const adsData = createAdvertisements(COUNT_ADS);
+import { getData, sendData } from './api.js';
+import { reset } from './clear-forms.js';
 
 formDisabled();
 addFormHandlers();
-addMap(adsData);
+
+getData(addMap);
+sendData(adForm);
+reset();
