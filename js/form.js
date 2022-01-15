@@ -88,4 +88,4 @@ const addFormHandlers = () => {
 };
 
 
-export { formDisabled, formEnabled, addFormHandlers };
+export { formDisabled, formEnabled, addFormHandlers, adForm };
